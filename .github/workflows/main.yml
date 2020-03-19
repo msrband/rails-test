@@ -26,7 +26,7 @@ jobs:
     - name: Checkout tools repo
       uses: actions/checkout@v2
       with:
-        repository: msrband/rais-docker
+        repository: msrband/rails-docker
         ref: master
         path: rails-docker
 
