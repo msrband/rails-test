@@ -31,6 +31,8 @@ jobs:
         path: rails-docker
 
     - name: Copy Gemfile to Rails Docker
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
       run: |
         cp ./main/{Gemfile,Gemfile.lock,package.json,yarn.lock} ./rails-docker
         cd ./rails-docker
@@ -38,6 +40,7 @@ jobs:
         git config --local user.name "GitHub Action"
         git add .
         git commit -m 'update dependencies' -a
+        # git remote set-url --push origin https://msrband:$GITHUB_TOKEN@github.com/msrband/rails-docker
         git push -u origin master
   
          
