@@ -1,0 +1,17 @@
+version: '3'
+services:
+  puma:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    command: bundle exec puma
+    # ports:
+    #   - '3000:3000'
+    volumes:
+      - .:/app:delegated
+      - bundle_cache:/usr/local/bundle:cached
+      - yarn_cache:/app/node_modules:cached
+volumes:
+  redis_data:
+  bundle_cache:
+  yarn_cache:
