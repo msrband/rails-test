@@ -36,6 +36,8 @@ jobs:
       run: |
         cp ./main/{Gemfile,Gemfile.lock,package.json,yarn.lock} ./rails-docker
         cd ./rails-docker
+        git config --local user.email 'msrband@gmail.com'
+        git config --local user.name 'msrband'
         git add .
         git commit -m 'update dependencies' -a
         echo 'set remote'
