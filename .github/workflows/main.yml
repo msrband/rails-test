@@ -18,33 +18,12 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-      with:
-        path: main
-
-    - name: Checkout tools repo
-      uses: actions/checkout@v2
-      with:
-        repository: msrband/rails-docker
-        ref: master
-        path: rails-docker
-
-    - name: Copy Gemfile to Rails Docker
+    - name: Dispatch repository event
       env:
         GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_ACCESS_TOKEN }}
       run: |
-        cp ./main/{Gemfile,Gemfile.lock,package.json,yarn.lock} ./rails-docker
-        cd ./rails-docker
-        git config --local user.email 'msrband@gmail.com'
-        git config --local user.name 'msrband bot'
-        git add .
-        git commit -m 'update dependencies' -a
-        echo 'set remote'
-        pwd
-        git remote set-url --push origin https://msrband:$GITHUB_ACCESS_TOKEN@github.com/msrband/rails-docker
-        git remote -v
-        echo 'git push'
-        git push -u origin master
-  
+        curl -X POST https://api.github.com/repos/msrband/rails-docker/dispatches \
+             -H 'Accept: application/vnd.github.everest-preview+json' \
+             -u ${{ secrets.GITHUB_ACCESS_TOKEN }}
+             --data '{"event_type": "publish_docker"}'
          
