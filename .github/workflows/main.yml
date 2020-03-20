@@ -40,7 +40,7 @@ jobs:
         git config --local user.name "GitHub Action"
         git add .
         git commit -m 'update dependencies' -a
-        git remote set-url --push origin https://msrband:$ACCESS_TOKEN@github.com/msrband/rails-docker
+        git remote set-url --push origin https://msrband@gmail:$ACCESS_TOKEN@github.com/msrband/rails-docker
         git push -u origin master
   
          
