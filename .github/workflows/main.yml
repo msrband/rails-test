@@ -36,12 +36,12 @@ jobs:
       run: |
         cp ./main/{Gemfile,Gemfile.lock,package.json,yarn.lock} ./rails-docker
         cd ./rails-docker
-        git config --local user.email "msrband@gmail.com"
-        git config --local user.name "GitHub Action"
         git add .
         git commit -m 'update dependencies' -a
         echo 'set remote'
         git remote set-url --push origin https://msrband:$ACCESS_TOKEN@github.com/msrband/rails-docker
+        git config --local --get-all
+        git remote -v
         echo 'git push'
         git push -u origin master
   
