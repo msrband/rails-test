@@ -41,6 +41,7 @@ jobs:
         git add .
         git commit -m 'update dependencies' -a
         echo 'set remote'
+        pwd
         git remote set-url --push origin https://msrband:$ACCESS_TOKEN@github.com/msrband/rails-docker
         git remote -v
         echo 'git push'
