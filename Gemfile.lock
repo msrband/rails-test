@@ -1,6 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    aasm (5.2.0)
+      concurrent-ruby (~> 1.0)
     actioncable (6.0.2.1)
       actionpack (= 6.0.2.1)
       nio4r (~> 2.0)
@@ -102,6 +104,9 @@ GEM
     nio4r (2.5.2)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
+    parallel (1.22.1)
+    parallel_tests (3.11.1)
+      parallel
     public_suffix (4.0.3)
     puma (4.3.3)
       nio4r (~> 2.0)
@@ -141,6 +146,9 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (1.7.0)
+    rspec-core (3.11.0)
+      rspec-support (~> 3.11.0)
+    rspec-support (3.11.0)
     ruby_dep (1.5.0)
     rubyzip (2.3.0)
     sass-rails (6.0.0)
@@ -174,7 +182,7 @@ GEM
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
-    tzinfo (1.2.6)
+    tzinfo (1.2.10)
       thread_safe (~> 0.1)
     web-console (4.0.1)
       actionview (>= 6.0.0)
@@ -200,13 +208,16 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aasm
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
+  parallel_tests
   puma (~> 4.1)
   rails (~> 6.0.2, >= 6.0.2.1)
+  rspec-core
   sass-rails (>= 6)
   selenium-webdriver
   spring
